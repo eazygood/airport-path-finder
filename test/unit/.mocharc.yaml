@@ -1,0 +1,7 @@
+bail: true
+full-trace: true
+recursive: true
+require:
+  - ts-node/register/transpile-only
+  - source-map-support/register
+spec: test/unit/**/*.ts

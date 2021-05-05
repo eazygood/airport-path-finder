@@ -1,0 +1,10 @@
+{
+    "dataset": {
+        "host": "raw.githubusercontent.com",
+        "airports": "/jpatokal/openflights/master/data/airports.dat",
+        "routes": "/jpatokal/openflights/master/data/routes.dat"
+    },
+    "server": {
+        "port": 80
+    }
+}
