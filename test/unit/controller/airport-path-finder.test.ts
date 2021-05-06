@@ -90,8 +90,14 @@ describe('AiportPathFinder', () => {
 		}])
 	});
 
-	it('returns src airport if dest is the same airport', async () => {
+	it('returns empty array if src and dest airports identical', async () => {
 		const shortestPath = airportPathFinder.findShortestPath('TLL', 'TLL');
+
+		assert.deepStrictEqual(shortestPath, [])
+	});
+
+	it('returns empty array if routes not found', async () => {
+		const shortestPath = airportPathFinder.findShortestPath('TLL', 'DAN');
 
 		assert.deepStrictEqual(shortestPath, [])
 	});

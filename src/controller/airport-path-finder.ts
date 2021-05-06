@@ -67,6 +67,10 @@ export class AirportPathFinder {
     }
 
     private getShortestRoute(routes: AirportRoute[]): ShortestRoute[] {
+        if (routes.length < 1) {
+            return [];
+        }
+
         routes.sort((a, b) => a.distance - b.distance);
         const efficientRoute = routes[0];
 
