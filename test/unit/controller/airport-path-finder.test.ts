@@ -93,11 +93,7 @@ describe('AiportPathFinder', () => {
 	it('returns src airport if dest is the same airport', async () => {
 		const shortestPath = airportPathFinder.findShortestPath('TLL', 'TLL');
 
-		assert.deepStrictEqual(shortestPath, [{
-			iata: 'TLL',
-			name: 'Lennart Meri Tallinn Airport',
-			distance: 0
-		}])
+		assert.deepStrictEqual(shortestPath, [])
 	});
 
 	it('throws error if src iata code not found', async () => {

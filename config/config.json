@@ -5,6 +5,6 @@
         "routes": "/jpatokal/openflights/master/data/routes.dat"
     },
     "server": {
-        "port": 80
+        "port": 777
     }
 }

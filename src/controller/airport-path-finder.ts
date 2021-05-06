@@ -70,19 +70,25 @@ export class AirportPathFinder {
         routes.sort((a, b) => a.distance - b.distance);
         const efficientRoute = routes[0];
 
-        return this.format(efficientRoute, []);
+        const formatted = this.format(efficientRoute, []);
+
+        if (formatted.length < 2) {
+            return [];
+        }
+
+        return formatted;
     }
 
     private format(route: AirportRoute, shortest: ShortestRoute[]): ShortestRoute[] {
-        const aiportRoute = route.prev as AirportRoute;
+        const airportRoute = route.prev as AirportRoute;
 
-        if (aiportRoute) {
+        if (airportRoute) {
             shortest.push({
                 iata: route.vertex.airport.iata,
                 name: route.vertex.airport.name,
                 distance: route.distance,
             })
-            this.format(aiportRoute, shortest)
+            this.format(airportRoute, shortest)
         }
 
         return [...shortest].reverse();

@@ -1,5 +1,5 @@
 ## Airport route finder
-Implementation of Dijkstra algorithm with additional conditional for finding the shortest path between airports with max 3 stops/layovers
+Implementation of Dijkstra algorithm with additional conditional for finding the shortest path between airports with max 3 stops/layovers.
 
 ### service initialization
 

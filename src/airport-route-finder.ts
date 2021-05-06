@@ -45,10 +45,10 @@ app.get('/route', (req, res) => {
 		const path = finder.findShortestPath(src.toUpperCase(), dest.toUpperCase());
 
 		res.status(200);
-		res.send({data: path});
+		res.json({data: path});
 	} catch (err) {
 		res.status(500);
-		res.send({error: err.message});
+		res.json({error: err.message});
 	}
 })
 
