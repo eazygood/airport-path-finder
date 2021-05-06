@@ -1,4 +1,4 @@
-import { startAirportRouteFinderServer } from "./src/airport-route-finder";
+import { initRoutes, startAirportRouteFinderServer } from "./src/airport-route-finder";
 const criticalErrorHandler = (err: Error) => {
 	// eslint-disable-next-line no-console
 	console.error(err);
@@ -10,6 +10,8 @@ process.on('unhandledRejection', criticalErrorHandler);
 
 const startServer = async () => {
 	startAirportRouteFinderServer();
+
+	await initRoutes();
 }
 
 startServer();

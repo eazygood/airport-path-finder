@@ -28,32 +28,33 @@ const startAirportRouteFinderServer = (): Server => {
 	return app.listen(port);
 }
 
-let finder: AirportPathFinder;
-buildAirportPathFinderGraph().then(res => finder = res);
+const initRoutes = async (): Promise<void> => {
+	const finder: AirportPathFinder = await buildAirportPathFinderGraph();
 
-app.get('/route', (req, res) => {
-	const src: string = req.query.src as string;
-	const dest: string = req.query.dest as string;
-
-	if (!src || !dest) {
-		res.status(500);
-		res.send({status: 'IATA codes not provided'});
-		return;
-	}
-
-	try {
-		const path = finder.findShortestPath(src.toUpperCase(), dest.toUpperCase());
-
-		res.status(200);
-		res.json({data: path});
-	} catch (err) {
-		res.status(500);
-		res.json({error: err.message});
-	}
-})
+	app.get('/route', (req, res) => {
+		const src: string = req.query.src as string;
+		const dest: string = req.query.dest as string;
+	
+		if (!src || !dest) {
+			res.status(500);
+			res.send({status: 'IATA codes not provided'});
+			return;
+		}
+	
+		try {
+			const path = finder.findShortestPath(src.toUpperCase(), dest.toUpperCase());
+	
+			res.status(200);
+			res.json({data: path});
+		} catch (err) {
+			res.status(500);
+			res.json({error: err.message});
+		}
+	})
+}
 
 export {
 	startAirportRouteFinderServer,
-	buildAirportPathFinderGraph,
+	initRoutes
 }
 
